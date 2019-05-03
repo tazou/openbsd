@@ -12,7 +12,7 @@ bind-key M-underscore       group-only-8
 bind-key M-ccedilla         group-only-9
 bind-key M-agrave           group-toggle-all
 
-# Déplacer les fenêts redans un groupe
+# Déplacer la fenêtre dans un groupe
 bind-key MS-ampersand        window-movetogroup-1
 bind-key MS-eacute           window-movetogroup-2
 bind-key MS-quotedbl         window-movetogroup-3
@@ -23,8 +23,7 @@ bind-key MS-egrave           window-movetogroup-7
 bind-key MS-underscore       window-movetogroup-8
 bind-key MS-ccedilla         window-movetogroup-9
 
-#éééé
-# Circuler dans les fenêtre
+# Circuler dans les fenêtres
 bind-key M-j		window-cycle
 bind-key M-k		window-cycle
 bind-key M-f		window-maximize
@@ -33,11 +32,13 @@ bind-key M-w		window-close
 # Tiling
 bind-key M-v		window-vtile
 bind-key M-h		window-htile
-
-fontname		"fixed:pixelsize=15"
 snapdist		20
 sticky			yes
 
+# Police du menu
+fontname		"fixed:pixelsize=15"
+
+# Décoration
 borderwidth 2
 color activeborder	"blue"
 color inactiveborder	"black"
