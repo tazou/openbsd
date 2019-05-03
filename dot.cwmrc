@@ -42,3 +42,12 @@ fontname		"fixed:pixelsize=15"
 borderwidth 2
 color activeborder	"blue"
 color inactiveborder	"black"
+
+# Souris
+# Désactive le redimensionnement avec le clic milieu
+unbind-mouse M-2
+# Alt+ clic droit redimensionne
+bind-mouse M-3 window-resize
+
+# Executer un programme
+bind-key M-r 	menu-exec
