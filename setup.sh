@@ -17,3 +17,8 @@ chown $monuser:$monuser /home/$monuser/.cwmrc
 echo "set timeout 1" > /etc/boot.conf
 
 echo "xterm*font:     *-fixed-*-*-*-18-*" > /home/$monuser/XTerm
+chown $monuser:$monuser /home/$monuser/.XTerm
+
+#X11
+echo "Sur l'h√te VirtualBox faire : VBoxManage setextradata 'openbsd65' CustomVideoMode1 1920x1080x32"
+cp 00-virtualbox-monitor.conf /usr/X11R6/share/X11/xorg.conf.d/
