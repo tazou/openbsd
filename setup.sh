@@ -6,6 +6,9 @@ monuser='gui'
 
 pkg_add vim git bash
 
+#MATE Desktop
+for p in $(pkg_info -Q mate|grep ^mate|grep -v installed|tr '\n' ' ');do pkg_add $p;done
+
 echo "xsetroot -solid lightblue &" > /home/$monuser/.xsession
 echo "export LC_CTYPE='en_US.UTF-8'" >> /home/$monuser/.xsession
 echo "export LC_CTYPE='en_US.UTF-8'" >> /home/$monuser/.profile
