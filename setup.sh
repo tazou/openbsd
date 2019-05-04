@@ -16,6 +16,8 @@ echo "exec cwm" >> /home/$monuser/.xsession
 
 cp dot.cwmrc /home/$monuser/.cwmrc
 chown $monuser:$monuser /home/$monuser/.cwmrc
+chown $monuser:$monuser /home/$monuser/.xsession
+chown $monuser:$monuser /home/$monuser/.profile
 
 echo "set timeout 1" > /etc/boot.conf
 
