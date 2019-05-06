@@ -22,9 +22,9 @@ chown $monuser:$monuser /home/$monuser/.profile
 echo "set timeout 1" > /etc/boot.conf
 
 echo "xterm*font:     *-fixed-*-*-*-18-*" > /home/$monuser/XTerm
-chown $monuser:$monuser /home/$monuser/.XTerm
+chown $monuser:$monuser /home/$monuser/XTerm
 
 #X11
-echo "Il faut utiliser pour la VM OpenBSD dans VirtualBox le drier video VMSVGA."
-echo "Sur l'hôte VirtualBox faire : VBoxManage setextradata 'openbsd65' CustomVideoMode1 1920x1080x32"
+echo "Il faut utiliser pour la VM OpenBSD dans VirtualBox le driver video VMSVGA."
+echo "Sur l'hote VirtualBox faire : VBoxManage setextradata 'openbsd65' CustomVideoMode1 1920x1080x32"
 cp 00-virtualbox-monitor.conf /usr/X11R6/share/X11/xorg.conf.d/
