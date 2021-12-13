@@ -7,6 +7,7 @@ monuser='gui'
 pkg_add vim git bash
 
 #MATE Desktop
+pkg_add mate
 for p in $(pkg_info -Q mate|grep ^mate|grep -v installed|tr '\n' ' ');do pkg_add $p;done
 
 echo "xsetroot -solid lightblue &" > /home/$monuser/.xsession
