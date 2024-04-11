@@ -1,32 +1,42 @@
 #!/bin/sh
 
-#Setup OpenBSD Desktop
+# Setup an OpenBSD Desktop
 
-monuser='gui'
+myuser='gui'
 
-pkg_add vim git bash
+pkg_add -v vim git bash
 
 #MATE Desktop
-pkg_add mate
-for p in $(pkg_info -Q mate|grep ^mate|grep -v installed|tr '\n' ' ');do pkg_add $p;done
+#pkg_add mate
+#for p in $(pkg_info -Q mate|grep ^mate|grep -v installed|tr '\n' ' ');do pkg_add $p;done
 
-echo "xsetroot -solid lightblue &" > /home/$monuser/.xsession
-echo "export LC_CTYPE='en_US.UTF-8'" >> /home/$monuser/.xsession
-echo "export LC_CTYPE='en_US.UTF-8'" >> /home/$monuser/.profile
-echo "#exec cwm" >> /home/$monuser/.xsession
-echo "exec mate-session" >> /home/$monuser/.xsession
+# XFCE Desktop
+pkg_add -iv xfce
 
-cp dot.cwmrc /home/$monuser/.cwmrc
-chown $monuser:$monuser /home/$monuser/.cwmrc
-chown $monuser:$monuser /home/$monuser/.xsession
-chown $monuser:$monuser /home/$monuser/.profile
+# Additionals
+pkg_add -v mozilla-dicts-fr
+
+echo "export LC_CTYPE='en_US.UTF-8'" >> /home/$myuser/.xsession
+echo "export LC_CTYPE='en_US.UTF-8'" >> /home/$myuser/.profile
+#echo "exec mate-session" >> /home/$myuser/.xsession
+echo "exec xfce4-session" >> /home/$myuser/.xsession
+
+# CWM
+# echo "xsetroot -solid lightblue &" > /home/$myuser/.xsession
+# echo "#exec cwm" >> /home/$myuser/.xsession
+# cp dot.cwmrc /home/$myuser/.cwmrc
+#chown $myuser:$myuser /home/$myuser/.cwmrc
+
+# Permissions
+chown $myuser:$myuser /home/$myuser/.xsession
+chown $myuser:$myuser /home/$myuser/.profile
 
 echo "set timeout 1" > /etc/boot.conf
 
-echo "xterm*font:     *-fixed-*-*-*-18-*" > /home/$monuser/XTerm
-chown $monuser:$monuser /home/$monuser/XTerm
+# echo "xterm*font:     *-fixed-*-*-*-18-*" > /home/$myuser/XTerm
+# chown $myuser:$myuser /home/$myuser/XTerm
 
-#X11
-echo "Il faut utiliser pour la VM OpenBSD dans VirtualBox le driver video VMSVGA."
-echo "Sur l'hote VirtualBox faire : VBoxManage setextradata 'openbsd65' CustomVideoMode1 1920x1080x32"
-cp 00-virtualbox-monitor.conf /usr/X11R6/share/X11/xorg.conf.d/
+# X11: If you use VirtualBox
+# echo "If you are in VirtualBox, you need to use the video drive VMSVGA"
+# echo "On hypervizor, configure screen resolution with: VBoxManage setextradata 'openbsd75' CustomVideoMode1 1920x1080x32"
+# cp 00-virtualbox-monitor.conf /usr/X11R6/share/X11/xorg.conf.d/
